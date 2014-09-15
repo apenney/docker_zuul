@@ -11,8 +11,5 @@ ENV PYTHONPATH /tmp/ansible/lib:$PYTHON_PATH
 RUN git clone http://github.com/apenney/ansible_zuul.git /tmp/zuul
 ADD inventory /etc/ansible/hosts
 WORKDIR /tmp/zuul
-RUN ansible-playbook pre.yml -c local
-# Remove this, consolidate into one role.
-ADD source /var/zuul/application
-RUN ansible-playbook post.yml -c local
+RUN ansible-playbook site.yml -c local
 #EXPOSE 80
